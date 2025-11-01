@@ -1,4 +1,4 @@
-# Mind-Morph AI Personality Anakyzer
+# Mind-Morph AI Personality Analyzer
 
 
 
