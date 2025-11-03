@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In - Buddy</title>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* ✅ 3D Blue Background */
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* ✅ Center horizontally */
+    align-items: center; /* ✅ Center vertically */
+    overflow: hidden;
+    background: radial-gradient(circle at 30% 70%, #003366, #001933 70%);
+    background-attachment: fixed;
+    position: relative;
+  }
+
+  /* Floating Glows */
+  .circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.25;
+    animation: glowFloat 10s infinite ease-in-out alternate;
+    z-index: 1;
+  }
+
+  .circle:nth-child(1) {
+    width: 400px;
+    height: 400px;
+    background: #0047ab;
+    top: -100px;
+    left: -120px;
+  }
+
+  .circle:nth-child(2) {
+    width: 300px;
+    height: 300px;
+    background: #005bff;
+    bottom: -100px;
+    right: -100px;
+    animation-delay: 3s;
+  }
+
+  @keyframes glowFloat {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-40px); }
+  }
+
+  /* ✅ Sign Up Box centered */
+  .register-container {
+    background: rgba(11, 20, 38, 0.9);
+    backdrop-filter: blur(10px);
+    width: 380px;
+    padding: 40px 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    position: fixed;
+
+    left: 50%;       /* ✅ center horizontally */
+    top: 50%;        /* ✅ center vertically */
+    transform: translate(-50%, -50%);
+
+    z-index: 10;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+  }
+
+  .register-container h2 {
+    font-size: 22px;
+    margin-bottom: 25px;
+  }
+
+  .register-container h2 span {
+    color: #2196f3;
+  }
+
+  .input-field {
+    margin-bottom: 20px;
+  }
+
+  .input-field input {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    background: #18233b;
+    color: #fff;
+    outline: none;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.4);
+  }
+
+  .input-field input::placeholder {
+    color: #aaa;
+  }
+
+  .terms {
+    font-size: 12px;
+    color: #ccc;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .terms a {
+    color: #2196f3;
+    text-decoration: none;
+  }
+
+  .btn {
+    width: 100%;
+    background: linear-gradient(90deg, #2196f3, #42a5f5);
+    border-radius: 8px;
+    padding: 12px;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(66, 165, 245, 0.6);
+  }
+
+  .signin {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+
+  .signin a {
+    color: #2196f3;
+    text-decoration: none;
+  }
+
+  .or {
+    color: #aaa;
+    margin: 20px 0;
+  }
+
+  .social-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .social-buttons button {
+    flex: 1;
+    background: #18233b;
+    border: 1px solid #2e3b55;
+    padding: 10px;
+    border-radius: 8px;
+    color: #fff;
+    transition: .3s;
+  }
+
+  .social-buttons button:hover {
+    background: #1a2946;
+    box-shadow: 0 0 10px rgba(33,150,243,0.3);
+  }
+
+  /* ✅ Robot on Right side - Floating */
+  .robot {
+    width: 350px;
+    position: fixed;
+    right: 60px;
+    bottom: 30px;
+    animation: robotFloat 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(0, 225, 255, 0.4));
+    z-index: 5;
+  }
+
+  @keyframes robotFloat {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+  }
+
+  /* ✅ Mobile Responsive */
+  @media (max-width: 900px) {
+    .robot {
+      width: 250px;
+      right: 10px;
+      bottom: 20px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .robot {
+      display: none;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="circle"></div>
+<div class="circle"></div>
+
+<!-- ✅ Sign Up Form at Center -->
+<div class="register-container">
+  
+  <h2>Welcome to Mind Morph <span>Sign In Buddy!</span></h2>
+
+  <form id="signupForm">
+   <!-- <div class="input-field">
+      <input type="text" id="name" placeholder="Enter your name" required>
+    </div>-->
+
+    <div class="input-field">
+      <input type="email" id="email" placeholder="Enter your email" required>
+    </div>
+
+    <div class="input-field">
+      <input type="password" id="password" placeholder="Enter your password" required>
+    </div>
+
+    <div class="terms">
+      <label>
+        <input type="checkbox" required> I agree to <a href="#">Terms of Service</a> & <a href="#">Privacy Policy</a>
+      </label>
+    </div>
+
+    <button type="submit" class="btn" id="signinBtn">Sign In</button>
+
+    <!--<div class="signin">
+      Already have an account? <a href="signin3d.html">Sign In</a>
+    </div>-->
+
+    <div class="or">or continue with</div>
+
+    <div class="social-buttons">
+      <button id="googleBtnSignup">Google</button>
+      <button id="facebookBtnSignup">Facebook</button>
+    </div>
+  </form>
+</div>
+
+<!-- 🤖 Robot Fixed on Right -->
+<img src="hello.webp" class="robot" alt="Buddy">
+
+<script>
+document.getElementById('signupForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  // Save to localStorage
+  localStorage.setItem('userName', name);
+  localStorage.setItem('userEmail', email);
+  localStorage.setItem('userPassword', password);
+
+  alert('Account created successfully! You can now sign in.');
+  window.location.href = 'https://charactr-ai.lovable.app/';
+});
+
+document.getElementById('googleBtnSignup').addEventListener('click', function() {
+  window.open('https://accounts.google.com/signin', '_blank');
+});
+
+document.getElementById('facebookBtnSignup').addEventListener('click', function() {
+  window.open('https://www.facebook.com/login', '_blank');
+});
+document.getElementById('signinBtn').addEventListener('click', function(event) {
+  event.preventDefault(); // prevent form submit reload if inside form
+  //alert('Signing in... Redirecting you now!');
+  window.location.href = 'https://charactr-ai.lovable.app/';
+});
+
+</script>
+
+</body>
+</html>
